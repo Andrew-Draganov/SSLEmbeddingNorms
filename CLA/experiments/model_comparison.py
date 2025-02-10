@@ -269,27 +269,21 @@ if __name__ == '__main__':
         {
             'resnet_version': 18,
             'batch_size': 512,
-            'epochs': 512,
-            'first_finetune': 16,
-            'log_start_epoch': 16,
-            'eval_load_epoch': 64,
+            'first_finetune': 16, # the checkpoint at which to start evaluating classification accuracies
+            'log_start_epoch': 16, # the checkpoint from which to start saving off embeddings if save_off is set to True
         },
         {
             'resnet_version': 18,
             'batch_size': 512,
-            'epochs': 512,
             'first_finetune': 16,
             'log_start_epoch': 16,
-            'eval_load_epoch': 64,
             'cut': 3
         },
         {
             'resnet_version': 18,
             'batch_size': 512,
-            'epochs': 512,
             'first_finetune': 16,
             'log_start_epoch': 16,
-            'eval_load_epoch': 64,
             'power': 1,
             'learning_rate': 0.1,
             'lr_warmup_epochs': 100
