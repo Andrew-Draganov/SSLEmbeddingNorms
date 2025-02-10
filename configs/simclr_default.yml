@@ -1,0 +1,50 @@
+# model
+projection_dim: 128 # "[...] to project the representation to a 128-dimensional latent space"
+resnet_version: 50
+
+# Loss functions
+loss_function: infonce
+transform_one: False
+
+# Directories
+data_dir: 'data'
+
+# Which data augmentations do we apply onto the data
+rotation: False
+perspective: False
+brightness: True
+contrast: True
+saturation: True
+hue: True
+grayscale: True
+blur: False
+
+# train options
+seed: 42
+batch_size: 256
+workers: 8
+epochs: 512
+cut_all: True # Cut all weights if true. If False, cut only last weight.
+cut: 1
+
+# loss options
+optimizer: 'sgd' # deprecated
+learning_rate: 0.6 # initial lr = 0.3 * batch_size / 256 for simclr
+lr_warmup_epochs: 10 # Number of epochs of linear warmup
+lr_epochs: 512 # Do cosine annealing as if there were 512 epochs
+momentum: 0.9
+weight_decay: 1.0e-6 # simclr paper says "optimized using LARS [...] and weight decay of 10−6"
+temperature: 0.5 # see appendix B.7.: Optimal temperature under different batch sizes
+nesterov: False
+bn: False
+power: 0
+
+# finetune options
+finetune_epochs: 2
+lin_learning_rate: 0.1
+finetune_batch_size: 256
+eval_load_epoch: 512  # checkpoint for finetune
+training_load_epoch: 0  # epoch at which to pick up training
+first_finetune: 16  # checkpoint for first epoch at which to finetune during training
+log_start_epoch: 512  # Save off embeddings for all checkpoints after and including this epoch
+ablation_dataset: 'None'

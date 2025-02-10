@@ -1,0 +1,10 @@
+build/
+outputs/
+scratch/
+logs/
+__pycache__/
+data/
+models/
+tex/
+.ipynb_checkpoints/
+*.egg-info

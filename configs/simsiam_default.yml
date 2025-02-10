@@ -1,0 +1,51 @@
+# model
+projection_dim: 2048
+bn: True
+resnet_version: 50
+
+# Loss functions
+loss_function: sym_attractive_loss
+transform_one: False
+norm_scalar: 0.
+
+# Directories
+data_dir: 'data'
+
+# Transformation control
+rotation: False
+perspective: False
+brightness: True
+contrast: True
+saturation: True
+hue: True
+grayscale: True
+blur: False
+
+# train options
+seed: 42 # sacred handles automatic seeding when passed in the config
+effective_batch_size: 1024
+batch_size: 128
+workers: 8
+epochs: 512
+cut_all: True
+cut: 1
+
+# loss options
+learning_rate: 0.2
+lr_warmup_epochs: 10 # Number of steps of linear warmup
+lr_epochs: 512 # Do cosine annealing as if there were 512 epochs
+momentum: 0.9
+weight_decay: 5.0e-4
+temperature: 1.0
+nesterov: True
+power: 0
+
+# finetune options
+finetune_epochs: 2
+lin_learning_rate: 0.5
+finetune_batch_size: 256
+eval_load_epoch: 32  # checkpoint for finetune
+training_load_epoch: 0  # epoch at which to pick up training
+first_finetune: 16
+log_start_epoch: 512  # Save off embeddings for all checkpoints after and including this epoch
+ablation_dataset: 'None'
